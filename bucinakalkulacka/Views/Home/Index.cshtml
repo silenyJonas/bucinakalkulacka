@@ -1,0 +1,39 @@
+﻿<div class="main">
+	<div class="wrp-input">
+		<div class="input">
+			<div class="number-input">
+				<h3>			
+						@ViewBag.Value			
+				</h3>	
+
+				
+			</div>
+			<a asp-action="Index" asp-route-value="backspace" class="backspace-wrp">
+			
+					<h3>&larr;</h3>
+				
+			</a>
+		</div>
+	</div>
+	<div class="wrp-grid">
+		<div class="grid">
+			@for(int i = 9; i >= 0; i--)
+			{
+				<a asp-action="Index" asp-route-value="@i"><div class="item"><h3>@i</h3></div></a>				
+			}
+			
+			<a asp-action="Index" asp-route-value="+"><div class="item"><h3>+</h3></div></a>
+			<a asp-action="Index" asp-route-value="-"><div class="item"><h3>-</h3></div></a>
+			<a asp-action="Index" asp-route-value="*"><div class="item"><h3>*</h3></div></a>
+			<a asp-action="Index" asp-route-value="/"><div class="item"><h3>/</h3></div></a>
+
+			<a asp-action="Index" asp-route-value="."><div class="item"><h3>,</h3></div></a>
+			<a asp-action="Index" asp-route-value="squareRoot"><div class="item"><h3>√</h3></div></a>
+			<a asp-action="Index" asp-route-value="square"><div class="item"><h3>x²</h3></div></a>
+
+			<a asp-action="Index" asp-route-value="="><div class="item"><h3>=</h3></div></a>
+
+		</div>
+	</div>
+</div>
+

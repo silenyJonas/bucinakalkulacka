@@ -1,0 +1,52 @@
+﻿.main{
+    justify-content: center;
+}
+
+.wrp-input {
+    display: flex;
+    justify-content: center;   
+    margin-bottom: 16px;
+}
+.wrp-grid {
+    display: flex;
+    justify-content: center;
+}
+.input{
+    height: 100px;
+    width: 50%;
+    display: flex;
+}
+
+.number-input {
+    display: flex;    
+    align-items: center;
+
+    margin: 8px;
+    width: 80%;
+    height: 100%;
+    background-color: palegreen;
+    border: 1px solid black;
+}
+.number-input h3{
+    padding-left: 16px
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    height: 100px;
+    width: 50%;
+}
+.item {
+    margin: 8px;
+    text-align: center;
+    border: 1px solid black;
+    padding: 20px;
+    
+    color: black;
+}
+.item:hover{
+    background-color: lightgray;
+}
+
+
