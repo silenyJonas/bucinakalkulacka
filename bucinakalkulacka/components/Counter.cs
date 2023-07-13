@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Globalization;
 
 namespace bucinakalkulacka.components
 {
@@ -25,7 +26,7 @@ namespace bucinakalkulacka.components
         }
         public string Odmocnit(string baseValue)
         {          
-            return Math.Sqrt(double.Parse(baseValue)).ToString();
+            return Math.Sqrt(float.Parse(baseValue, CultureInfo.InvariantCulture)).ToString();
         }
 
     }
