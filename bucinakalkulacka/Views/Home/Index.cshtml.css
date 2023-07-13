@@ -1,5 +1,6 @@
 ﻿.main{
-    justify-content: center;
+    display: flex;
+    
 }
 
 .wrp-input {
@@ -10,10 +11,11 @@
 .wrp-grid {
     display: flex;
     justify-content: center;
+    height: auto;
 }
 .input{
     height: 100px;
-    width: 50%;
+    width: 80%;
     display: flex;
 }
 
@@ -35,7 +37,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     height: 100px;
-    width: 50%;
+    width: 80%;
 }
 .item {
     margin: 8px;
@@ -48,5 +50,11 @@
 .item:hover{
     background-color: lightgray;
 }
-
+.calc, .historie{
+    border: 1px solid black;
+    width: 50vw;
+    height: 85vh;
+    margin: 15px;
+    
+}
 

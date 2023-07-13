@@ -2,7 +2,7 @@
 {
     public class ContentSingleton
     {
-        public static Content Instance { get; set; } = null;
+        public static Content Instance { get; set; } = null;       
 
         public static Content GetInstance()
         {

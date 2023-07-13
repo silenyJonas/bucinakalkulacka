@@ -5,44 +5,68 @@ using System.Diagnostics;
 
 namespace bucinakalkulacka.Controllers
 {
-    public class HomeController : Controller
-    {       
+    public class HomeController : BaseController
+    {      
         public IActionResult Index(string value)
-        {            
-            if(string.IsNullOrEmpty(value))
+        {         
+            try
             {
-                return View();
+                if (string.IsNullOrEmpty(value))
+                {
+                    ViewBag.CelaCisla = false;
+                    return View();
+                }
+
+                if (value == "backspace")
+                {
+                    content.PopValue();
+                }
+                else if (value == "=")
+                {
+                    content.AddDb(counter.GetValue(content.Value));
+                    content.Value = counter.GetValue(content.Value);
+                }
+                else if (value == "squareRoot")
+                {
+                    content.Value = counter.Odmocnit(content.Value);
+                }
+                else if (value == "square")
+                {
+                    content.Value = counter.Mocnit(content.Value);
+                }
+                else if(value == "clear")
+                {
+                    content.Clear();
+                }
+                else if(value == "int")
+                {
+                    
+                    content.CelaCislaSwap();
+                }
+                else
+                {
+                    content.AddValue(value);
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                errorProvider.SendError(ex);
             }
 
-            if(value == "backspace")
+            if (content.Value.Length > 20)
             {
-                ContentSingleton.GetInstance().Pop();
-            }
-            else if(value == "=")
-            {
-                ContentSingleton.GetInstance().Value = new Counter().GetValue(ContentSingleton.GetInstance().Value);
-            }
-            else if(value == "squareRoot")
-            {
-                ContentSingleton.GetInstance().Value = new Counter().Odmocnit(ContentSingleton.GetInstance().Value);
-            }
-            else if(value == "square")
-            {
-                ContentSingleton.GetInstance().Value = new Counter().Mocnit(ContentSingleton.GetInstance().Value);
+                ViewBag.Value = ".." + content.Value.Substring(content.Value.Length - 20);
             }
             else
             {
-                ContentSingleton.GetInstance().Push(value);
+                ViewBag.Value = content.Value;
             }
 
-            if(ContentSingleton.GetInstance().Value.Length > 25)
-            {
-                ViewBag.Value = ".."+ ContentSingleton.GetInstance().Value.Substring(ContentSingleton.GetInstance().Value.Length-25);
-            }
-            else
-            {
-                ViewBag.Value = ContentSingleton.GetInstance().Value;
-            }                    
+            ViewBag.Historie = content.Db;
+            ViewBag.Counter = content.counter;            
+            ViewBag.CelaCisla = ContentSingleton.GetInstance().CelaCisla;
+
             return View();
         }      
        
